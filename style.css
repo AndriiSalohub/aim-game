@@ -94,3 +94,11 @@ h1 {
     overflow: hidden;
 }
   
+
+
+.circle {
+    background: linear-gradient(90deg, #16D9E3 0%, #30C7EC 47%, #46AEF7 100%);
+    position: absolute;
+    border-radius: 50%;
+    cursor: pointer;
+}
