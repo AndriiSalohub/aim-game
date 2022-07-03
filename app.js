@@ -3,6 +3,14 @@ const screens = document.querySelectorAll(".screen");
 const timeList = document.querySelector("#time-list");
 const timer = document.querySelector("#time");
 const board = document.querySelector("#board");
+const colors = [
+    "#d66868",
+    "#e2ab6c",
+    "#d1b82d",
+    "#5bd12d",
+    "#1957ca",
+    "#a719ca",
+];
 let time = 0;
 let score = 0;
 
@@ -45,6 +53,11 @@ function decreaseTime() {
     }
 }
 
+function finishGame() {
+    timer.parentNode.classList.add("hide");
+    board.innerHTML = `<h1>Ваш счет: <span class='primary'>${score}</span><h1>`;
+}
+
 function createRandomCircle() {
     const circle = document.createElement("div");
     const size = getRandomNumber(10, 60);
@@ -53,6 +66,7 @@ function createRandomCircle() {
     const y = getRandomNumber(0, height - size);
 
     circle.classList.add("circle");
+    circle.style.background = getRandomColor();
     circle.style.width = `${size}px`;
     circle.style.height = `${size}px`;
     circle.style.top = `${y}px`;
@@ -61,15 +75,16 @@ function createRandomCircle() {
     board.append(circle);
 }
 
-function setTime(value) {
-    timer.innerHTML = `00:${value}`;
-}
-
 function getRandomNumber(min, max) {
     return Math.round(Math.random() * (max - min) + min);
 }
 
-function finishGame() {
-    timer.parentNode.classList.add("hide");
-    board.innerHTML = `<h1>Ваш счет: <span class='primary'>${score}</span><h1>`;
+function getRandomColor() {
+    const index = Math.floor(Math.random() * colors.length);
+    console.log(index);
+    return colors[index];
+}
+
+function setTime(value) {
+    timer.innerHTML = `00:${value}`;
 }
