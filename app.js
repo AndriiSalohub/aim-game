@@ -68,3 +68,8 @@ function setTime(value) {
 function getRandomNumber(min, max) {
     return Math.round(Math.random() * (max - min) + min);
 }
+
+function finishGame() {
+    timer.parentNode.classList.add("hide");
+    board.innerHTML = `<h1>Ваш счет: <span class='primary'>${score}</span><h1>`;
+}
